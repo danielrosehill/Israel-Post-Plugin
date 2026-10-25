@@ -52,22 +52,24 @@ Four service types are exposed as buttons on the picker page:
 
 Not every branch offers every service — the buttons render per branch.
 
-## Flow (driven in headless Playwright)
+## Flow (Claude in Chrome or Playwright)
+
+Last verified end-to-end in Claude in Chrome on 2026-10-25 (real booking, branch 101, package pickup).
 
 1. `goto` the booking URL with `?no={branchnumber}`.
 2. Dismiss cookie overlay if present — `role=button[name="סגירה"]` (visible text `הבנתי`).
 3. Click the service button by Hebrew label (class `.LeadAppt-services-item`).
 4. Date/time picker renders:
-   - Day tabs — only days with availability appear (e.g. "ראשון 26").
-   - Daypart tabs — `#LeadAppt-datepick-time-dayparts button[data-for="noon"]` and `button[data-for="afterNoon"]`. The `.active` one is currently shown; the default is the afternoon tab if it has slots.
+   - Day tabs — `#LeadAppt-datepick-date-container .LeadAppt-datepick-date`, labelled e.g. "שני 26". Only days with availability appear; the earliest is `.active` by default.
+   - Daypart tabs — `#LeadAppt-datepick-time-dayparts button[data-for=…]`: `morning` (בוקר, 08:00–10:57), `noon` (צהריים, 11:00–13:57), `afterNoon` (אחה"צ, 14:00 onward; last slot seen 17:18). The `.active` one is shown; `morning` was the default on 2026-10-25 (the `morning` tab was added after this skill was first written).
    - Slot buttons — 3-minute intervals, labeled `HH:MM`, inside the active daypart only.
 5. Select day tab → daypart tab → slot button.
 6. Click continue — `#LeadAppt-datepick-btn-next` (fires `LeadApptSubmit()`).
 7. Phone form:
    - Primary input: `#leadmobile`
-   - Confirm: `role=textbox[name="*הקלדה חוזרת של מספר טלפון סלולארי"]`
+   - Confirm: `#CellphoneNumber2` (accessible name `הקלדה חוזרת של מספר טלפון סלולארי`)
    - Both required; must match.
-8. Click continue.
+8. Click continue — button `המשך`.
 9. Confirmation page — look for heading text `פגישתך נקבעה בהצלחה` ("your appointment has been successfully booked"). Read back:
    - Branch name + address
    - Service
@@ -101,7 +103,7 @@ If the config is missing or `default_phone` is absent, the `book` flow must fail
 
 - Chromium headless=true with a realistic user-agent and default viewport is sufficient — no stealth plugin needed.
 - For `check-next`: stop after the daypart/slot tabs render. Extract the first day-tab label + first enabled slot button under the first non-empty daypart. Do **not** click anything further — avoids any risk of triggering a booking.
-- For `book`: perform the full flow. Require an explicit user confirmation of the summary (branch, service, day/date/time, phone tail digits) before clicking the final continue button. Verify `פגישתך נקבעה בהצלחה` before reporting success.
+- For `book`: perform the full flow. If the user's request already names the branch, service, day and time window, that request is the confirmation; otherwise require an explicit user confirmation of the summary (branch, service, day/date/time, phone tail digits) before clicking the final continue button. Verify `פגישתך נקבעה בהצלחה` before reporting success.
 - For `cancel`: run from the confirmation page only. Verify `פגישתך בוטלה בהצלחה` before reporting success.
 - If the Reblaze challenge ever escalates and headless stops working, fall back to a visible Playwright window; do not try to solve the challenge programmatically.
 
