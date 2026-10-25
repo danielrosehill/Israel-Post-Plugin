@@ -1,7 +1,7 @@
 {
   "name": "israel-post",
-  "version": "0.2.1",
-  "description": "Israel Post (דואר ישראל) operations: book, check and cancel branch appointments, find branches, track parcels.",
+  "version": "0.3.0",
+  "description": "Israel Post (דואר ישראל) operations: book, check and cancel branch appointments, add them to your calendar, track parcels.",
   "author": {
     "name": "Daniel Rosehill",
     "url": "https://github.com/danielrosehill"

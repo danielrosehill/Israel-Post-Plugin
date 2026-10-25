@@ -104,6 +104,7 @@ If the config is missing or `default_phone` is absent, the `book` flow must fail
 - Chromium headless=true with a realistic user-agent and default viewport is sufficient — no stealth plugin needed.
 - For `check-next`: stop after the daypart/slot tabs render. Extract the first day-tab label + first enabled slot button under the first non-empty daypart. Do **not** click anything further — avoids any risk of triggering a booking.
 - For `book`: perform the full flow. If the user's request already names the branch, service, day and time window, that request is the confirmation; otherwise require an explicit user confirmation of the summary (branch, service, day/date/time, phone tail digits) before clicking the final continue button. Verify `פגישתך נקבעה בהצלחה` before reporting success.
+- After a successful `book`: offer to add it to the user's calendar with `israel-post-calendar-event` (branch address, items to collect, shelf numbers).
 - For `cancel`: run from the confirmation page only. Verify `פגישתך בוטלה בהצלחה` before reporting success.
 - If the Reblaze challenge ever escalates and headless stops working, fall back to a visible Playwright window; do not try to solve the challenge programmatically.
 
