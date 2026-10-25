@@ -9,9 +9,9 @@ Status as of 2026-10-25.
 - Needs: opening hours, services per branch, nearest-branch by coordinates.
 - Open question: ship the full branch list, or query live each time.
 
-### `israel-post-tracking`
-- Prior art (third-party, not reviewed yet): https://github.com/WolfikOz/israel-post-tracking — read it before building.
-- Develop by driving the tracking page in a real browser; capture the underlying request if there is one, as with the appointment flow.
+## Tracking follow-ups
+- Built 2026-10-25 from a live capture; WolfikOz/israel-post-tracking reviewed and not reused (stealth Puppeteer, guessed selectors, text-sniffing for results).
+- Capture category codes for delivered, returned and customs-held items; test headless Playwright.
 
 ## Maintenance gaps
 - `refresh-branches.py` (referenced by `branches.json` → `generated_from`) is not in this repo. Recreate it when building branch search, and commit it under `scripts/`.
