@@ -91,6 +91,7 @@ Cross-session cancel by phone lookup is **not** currently supported by this skil
 - Booking is Qnomy Central (`https://central.qnomy.com/CentralAPI`, org 11; package pickup `ServiceId=4600`). `AppointmentSet?ServiceId=…&appointmentDate=YYYY-MM-DD&appointmentTime=<minutes since midnight>` books; `AppointmentCancel?VisitId=…` cancels.
 - A phone that already holds a booking gets the `#LeadAppt-DoubleTurn` dialog (`זיהינו שכבר יש לך תור מוזמן`) after the phone step. Nothing is booked.
 - The existing visit shown there, with its `בטל תור` button (`#LeadAppt-visitData-cancel`), comes only from a cookie (`qnomycookieVisit` + phone digits 5–10, holding `VisitId` + `JWT`). That cookie is set in **the browser that made the booking**. Any other browser gets an anonymous Qnomy user: `VisitGetFuture` returns nothing, the dialog has no visit data, and the site says to call `*171`.
+- The block does not lift when the old slot's time passes: a 15:00 booking still blocked booking 15:21 at 15:03 (2026-10-26).
 - So to cancel or rebook, use the same browser that booked (or the SMS link, or `*171`). Book through one fixed browser so a later cancel works.
 
 ## Local preferences (`~/.config/israel-post/preferences.yaml`)
