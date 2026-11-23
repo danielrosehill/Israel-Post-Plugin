@@ -1,7 +1,7 @@
 {
   "name": "israel-post",
-  "version": "0.3.0",
-  "description": "Israel Post (דואר ישראל) operations: book, check and cancel branch appointments, add them to your calendar, track parcels.",
+  "version": "0.4.0",
+  "description": "Israel Post (דואר ישראל) operations: send registered letters online (מכתב דיגיטלי), book, check and cancel branch appointments, add them to your calendar, track parcels.",
   "author": {
     "name": "Daniel Rosehill",
     "url": "https://github.com/danielrosehill"
@@ -15,6 +15,8 @@
     "hebrew",
     "appointments",
     "parcel-tracking",
-    "post-office"
+    "post-office",
+    "registered-mail",
+    "doar-rashum"
   ]
 }

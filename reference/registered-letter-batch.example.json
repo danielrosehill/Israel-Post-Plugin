@@ -1,0 +1,52 @@
+{
+  "_about": "Example batch for skills/israel-post-registered-letter. One object per letter = one 'מכתב N' block. No government ID numbers in this file.",
+  "batch_date": "YYYY-MM-DD",
+  "service": "israelpost-digital-letter",
+  "sender": {
+    "type": "משתמש פרטי",
+    "first_name": "<first>",
+    "last_name": "<last>",
+    "mobile": "(account default)",
+    "phone": "<landline, optional>",
+    "address": {
+      "city": "<עיר>",
+      "street": "<רחוב>",
+      "house": "<n>",
+      "apartment": "<n>",
+      "zip": "<7 digits>"
+    }
+  },
+  "letters": [
+    {
+      "n": 1,
+      "role": "<why this recipient>",
+      "shipping": "דואר רשום",
+      "price_ils": 18.5,
+      "recipient": {
+        "first_name": "<legal name, no quotes>",
+        "last_name": "בעמ - לידי המנכל",
+        "city": "<עיר>",
+        "street": "<רחוב>",
+        "house": "<n>",
+        "zip": "<7 digits>",
+        "legal_name": "<full legal name>",
+        "registry_id": "<ח.פ. / מס' שותפות>",
+        "registry_source": "data.gov.il companies f004176c-b85f-4542-8901-7b3176f9a054",
+        "verified": "YYYY-MM-DD"
+      },
+      "cover_text": "לכבוד ...\nהנדון: ...\nמצורף מכתבי מיום DD.MM.YYYY (N עמודים).\n<שם>, <כתובת>. טל' <טלפון>.",
+      "pdf": "<path>",
+      "pdf_sha256": "<sha256>",
+      "sms_notification": false,
+      "status": "pending",
+      "tracking": null,
+      "sent": null,
+      "delivered": null
+    }
+  ],
+  "payment": {
+    "amount_ils": null,
+    "transaction": null,
+    "paid": null
+  }
+}
