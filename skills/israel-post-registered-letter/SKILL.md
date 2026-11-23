@@ -109,11 +109,10 @@ The confirmation page shows `שולם סכום של`, `מספר עסקה` (trans
 tracking numbers (`RR…H`), comma-separated, **in letter order**. Map them by order and
 mark that as inferred until the tracking page confirms it. Save a screenshot of the page.
 Update the batch JSON (`status`, `sent`, `tracking`, `payment`) and the project's
-correspondence log. Delivery can be followed with `israel-post-tracking`.
+correspondence log. Delivery can be followed with `israel-post-tracking`. **Verified 2026-11-23:** the `RR…H` codes resolve on the tracking page within the hour, with status `הוזמן` (ordered) and one event ("Notification has been received regarding a parcel being shipped"), `DeliveryTypeDesc` `איסוף עצמי`, and an **empty `ReceiverAddress`**. So the code→letter mapping can't be confirmed from tracking until the item is printed and dispatched.
 Israel Post support: 171, doartek@postil.com.
 
 ## Not yet verified
 
-- Whether the `RR…H` codes resolve on the tracking page the same day, or only after printing.
 - Whether `חזקת מסירה` (deemed-delivery flag) changes anything for a private sender.
 - What the printed cover note looks like (font, page order relative to the PDF).

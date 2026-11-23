@@ -47,6 +47,10 @@ From the JSON (names in `reference/itemtrace-api.md`):
 
 `ReceiverName` and `ReceiverAddress` are personal data. Use them only to confirm the item is the user's when asked; don't write them to files or logs.
 
+## Seen on registered letters (2026-11-23)
+
+Items created by `מכתב דיגיטלי` (codes `RR0000…H`) return 200 straight away: `CategoryName` `הוזמן`, one `Maslul` row, `ReceiverAddress` empty until dispatch. The lowercase-code trick to force a fresh call works for these codes too.
+
 ## Not yet verified
 
 - Whether headless Playwright gets past the site's bot protection (Radware-style scripts load on the page). Only a real, signed-in-or-not Chrome profile has been tested.
